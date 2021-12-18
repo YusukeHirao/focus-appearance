@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>フォーカスアピアランスの考察 周囲の面積サンプルコード</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .sample7,
+      .sample8 {
+        color: #fff;
+        background: #000;
+        width: 150px;
+        height: 60px;
+        display: flex;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+      }
+      .sample7:focus {
+        outline: 2px solid #fff;
+        outline-offset: -4px;
+      }
+
+      .sample8 {
+        padding-left: 20px;
+        position: relative;
+      }
+      .sample8:focus::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background: #ff0;
+        border-radius: 100%;
+      }
+      .sample9 {
+        outline: none;
+        overflow: visible;
+      }
+      .sample9:focus {
+        stroke: #f00;
+        stroke-width: 4px;
+        stroke-linecap: bevel;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h2>サンプル7</h2>
+        <button type="button" class="sample7">
+          サンプルボタン
+        </button>
+        <p>
+          幅150px 高さ60px なので<br />
+          <code>150 + 150 + 60 + 60 - 4 = 416</code><br />
+          となり416平方pxが必要
+        </p>
+        <p>
+          ✅ 2px内側に2pxの太さのアウトラインの場合<br />
+          <code>146 + 146 + 56 + 56 - 4 = 400</code>(1px目)<br />
+          <code>144 + 144 + 54 + 54 - 4 = 392</code>(2px目)<br />
+          <code>400 + 392 = 692</code>(合計)<br />
+          となり、416平方pxを大きく上回る（適合）
+        </p>
+        <p>
+          仮に1pxの太さだった場合は先の計算上にあったとおり400平方pxしかないので不適合になってしまう
+        </p>
+      </section>
+      <section>
+        <h2>サンプル8</h2>
+        <button type="button" class="sample8">
+          サンプルボタン
+        </button>
+        <p>
+          幅150px 高さ60px なので<br />
+          <code>150 + 150 + 60 + 60 - 4 = 416</code><br />
+          となり416平方pxが必要
+        </p>
+        <p>
+          ✅
+          インジケータとして内側に現れる大きな黄色いドットは半径が12pxなので、
+          <code>12 × 12 × 3.14 ≒ 452</code><br />
+          となり、416平方pxを上回る（適合）
+        </p>
+      </section>
+      <section>
+        <h2>サンプル9</h2>
+        <svg
+          class="sample9"
+          tabindex="0"
+          width="110"
+          height="100"
+          viewBox="0 0 110 100"
+        >
+          <title>フォーカス可能な星の形をしたSVG要素</title>
+          <path
+            d="M50,0,62,34,98,35,69,56,79,90,50,70,20,90,30,56,2,34,38,34Z"
+            fill="#000"
+            paint-order="stroke"
+          ></path>
+        </svg>
+        <p>
+          ✅
+          星の形状でも、外側にそれよりも大きな星で境界を作れば理論上面積は規定より大きい（適合）
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

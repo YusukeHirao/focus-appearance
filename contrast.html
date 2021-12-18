@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>フォーカスアピアランスの考察 コントラストサンプルコード</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h2>サンプル1</h2>
+        <button
+          type="button"
+          style="
+            --background: #fff;
+            --border: 4px solid #000;
+            --border-hover: 4px solid #f00;
+          "
+        >
+          サンプルボタン
+        </button>
+        <p>
+          <code style="--color: #000;">#000</code>から<br /><code
+            style="--color: #f00;"
+            >#f00</code
+          >に変化している
+        </p>
+        <p>✅ コントラスト比は<em>5.25:1</em>（適合）</p>
+      </section>
+      <section>
+        <h2>サンプル2</h2>
+        <button
+          type="button"
+          style="
+            --background: #fff;
+            --border: 4px solid #000;
+            --border-hover: 4px solid #00f;
+          "
+        >
+          サンプルボタン
+        </button>
+        <p>
+          <code style="--color: #000;">#000</code>から<br /><code
+            style="--color: #00f;"
+            >#00f</code
+          >に変化している
+        </p>
+        <p>❌ コントラスト比は<em>2.44:1</em>（不適合）</p>
+      </section>
+      <section>
+        <h2>サンプル3</h2>
+        <button
+          type="button"
+          style="
+            --background: #fff;
+            --border: 2px solid #000;
+            --border-hover: 2px solid #000;
+            --outline-hover: 2px solid #00f;
+          "
+        >
+          サンプルボタン
+        </button>
+        <p>
+          <code style="--color: #fff;">#fff</code>から<br /><code
+            style="--color: #00f;"
+            >#00f</code
+          >に変化している
+        </p>
+        <p><strong>あくまで変化したのはボーダーではなく外側</strong></p>
+        <p>✅ コントラスト比は<em>8.59:1</em>（適合）</p>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+:root {
+  font-size: 12px;
+}
+.body {
+  padding: 0.5em 0.5em 6em;
+}
+h1 {
+  font-size: 1rem;
+}
+h2 {
+  font-size: 1rem;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+}
+.container section {
+  padding: 0 1em;
+  border: 1px solid #ccc;
+}
+
+button {
+  appearance: none;
+  border: none 0;
+  padding: 1em;
+  color: var(--color);
+  background: var(--background);
+  border: var(--border);
+  outline: var(--outline);
+}
+button:focus {
+  border: var(--border-hover);
+  outline: var(--outline-hover);
+  transform: var(--transform);
+}
+
+code {
+  font-family: monospace;
+}
+
+code[style^="--color"]::before {
+  content: "";
+  line-height: 0;
+  display: inline-block;
+  padding: 0;
+  margin: 0 0.2em 0 0;
+  width: calc(1em - 2px);
+  height: calc(1em - 2px);
+  background: var(--color);
+  border: 1px solid grey;
+}

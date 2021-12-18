@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      フォーカスアピアランスの考察 隣接するコントラストサンプルコード
+    </title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h2>サンプル4</h2>
+        <button
+          type="button"
+          style="
+            --background: #fff;
+            --border: 1px solid #000;
+            --border-hover: 1px solid #000;
+            --outline-hover: 1px solid #4747ff;
+          "
+        >
+          サンプルボタン
+        </button>
+        <p>
+          コンポーネントの隣接部分は<code style="--color: #000;">#000</code
+          >、<br />インジケータは<code style="--color: #4747ff;">#4747ff</code>
+        </p>
+        <p>✅ コントラスト比は<em>3.61:1</em>（適合）</p>
+        <p>
+          ちなみにインジケータの外側は<code style="--color: #fff;">#fff</code
+          >になるのでコントラスト比は<em>5.81:1</em>で、達成基準「1.4.11
+          非テキストのコントラスト」も適合する。
+        </p>
+      </section>
+      <section>
+        <h2>サンプル5</h2>
+        <button
+          type="button"
+          style="
+            --background: #fff;
+            --border: 1px solid #000;
+            --border-hover: 1px solid #000;
+            --outline-hover: 2px solid #000;
+          "
+        >
+          サンプルボタン
+        </button>
+        <p>
+          ✅
+          色の変化はないが、インジケータのアウトラインの太さが2pxとなっている（適合）
+        </p>
+      </section>
+      <section>
+        <h2>サンプル6</h2>
+        <button
+          type="button"
+          style="
+            --color: #fff;
+            --background: #000;
+            --border: 2px solid #000;
+            --border-hover: 2px solid #000;
+            --transform: scale(1.02);
+          "
+        >
+          サンプルボタン
+        </button>
+        <p>CSS Transfromを利用してコンポーネントを少しだけ拡大（1.02倍）</p>
+        <p>
+          変化としては、同色の2px以上の太さのアウトラインが追加されたのと実質同じになるわけだが、はたしてこのコンポーネントの拡大はフォーカスアピアランスと解釈ができるのだろうか
+          🤔 （未解決）
+        </p>
+      </section>
+    </div>
+  </body>
+</html>

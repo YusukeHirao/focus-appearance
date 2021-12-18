@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>フォーカスアピアランスの考察 最短の辺計算サンプルコード</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .sample10,
+      .sample11,
+      .sample12 {
+        color: #fff;
+        background: #000;
+        width: 150px;
+        height: 60px;
+        display: flex;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .sample10:focus:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: #f00;
+      }
+
+      .sample11:focus:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 4px;
+        height: calc(100% - 4px);
+        background: #f00;
+      }
+
+      .sample12:focus {
+        outline: 1px solid #fff;
+        outline-offset: -3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section>
+        <h2>サンプル10</h2>
+        <button type="button" class="sample10">
+          サンプルボタン
+        </button>
+        <p>
+          幅150px 高さ60px なので<br />
+          <code>60 × 4 = 240</code><br />
+          となり240平方pxが必要
+        </p>
+        <p>
+          ✅
+          最短となる左辺に4pxで要件と全く同じ240平方pxの矩形を重ねている（適合）
+        </p>
+      </section>
+      <section>
+        <h2>サンプル11</h2>
+        <button type="button" class="sample11">
+          サンプルボタン
+        </button>
+        <p>
+          幅150px 高さ60px なので<br />
+          <code>60 × 4 = 240</code><br />
+          となり240平方pxが必要
+        </p>
+        <p>
+          ❌ 2px内側に1pxの太さのアウトラインの場合<br />
+          <code>146 + 146 + 56 + 56 - 4 = 400</code><br />
+          400平方pxで、面積の条件は満たしているが、インジケータの厚さが2px未満（不適合）
+        </p>
+      </section>
+      <section>
+        <h2>サンプル12</h2>
+        <button type="button" class="sample12">
+          サンプルボタン
+        </button>
+        <p>
+          幅150px 高さ60px なので<br />
+          <code>60 × 4 = 240</code><br />
+          となり240平方pxが必要
+        </p>
+        <p>
+          ❌ 2px内側に1pxの太さのアウトラインの場合<br />
+          <code>146 + 146 + 56 + 56 - 4 = 400</code><br />
+          400平方pxで、面積の条件は満たしているが、インジケータの厚さが2px未満（不適合）
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
